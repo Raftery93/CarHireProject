@@ -264,3 +264,15 @@ org.eclipse.equinox.p2.core.ProvisionException: No repository found at http://do
 	at org.eclipse.equinox.internal.p2.updatechecker.UpdateChecker$UpdateCheckThread.run(UpdateChecker.java:74)
 !SUBENTRY 1 org.eclipse.equinox.p2.metadata.repository 4 1000 2018-12-07 13:38:44.476
 !MESSAGE No repository found at http://download.eclipse.org/webtools/downloads/drops/R3.2.5/R-3.2.5-20111027122637/repository/.
+
+!ENTRY org.eclipse.jface.text 2 0 2018-10-24 14:21:39.304
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-10-24 14:21:39.323
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-10-24 14:21:39.505
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.number'
+
+!ENTRY org.eclipse.jface.text 2 0 2018-10-24 14:21:39.533
+!MESSAGE Duplicate template id: 'org.eclipse.wst.xslt.templates.xpath.round'

@@ -1,0 +1,5 @@
+package ie.gmit.sw.ds.RMI;
+
+public class ReturnedCarHire {
+
+}

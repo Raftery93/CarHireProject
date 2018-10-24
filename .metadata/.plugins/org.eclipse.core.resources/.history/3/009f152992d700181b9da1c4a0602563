@@ -1,0 +1,10 @@
+package ie.gmit.sw.ds.RMI;
+
+public class RmiRunner {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+
+	}
+
+}

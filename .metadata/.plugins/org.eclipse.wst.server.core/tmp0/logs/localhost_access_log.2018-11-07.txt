@@ -1,0 +1,2 @@
+127.0.0.1 - - [07/Nov/2018:17:25:49 +0000] "GET / HTTP/1.1" 404 1069
+0:0:0:0:0:0:0:1 - - [07/Nov/2018:17:25:50 +0000] "GET /DSProject/WEB-INF/classes/ie/gmit/sw/ds/Controllers/BookingController.java HTTP/1.1" 404 1046

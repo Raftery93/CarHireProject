@@ -3,7 +3,6 @@ package ie.gmit.sw.ds.RMI;
 import java.rmi.RemoteException;
 import java.sql.ResultSet;
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.DriverManager;
 import java.sql.Statement;
 import java.util.ArrayList;
@@ -12,8 +11,6 @@ import java.util.List;
 import javax.sql.DataSource;
 
 import java.sql.SQLException;
-
-import java.rmi.*;
 import java.rmi.server.*;
 
 public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
@@ -44,7 +41,7 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 	
 	public List<ReturnedCarHire> readCarHire() throws RemoteException {
 		System.out.println("inside readBookings");
-		String strSelect = "select * from bookings";
+		String strSelect = "select * from carbookings";
 		ResultSet rset = null;
 		ArrayList<ResultSet> resultSetSerialized = new ArrayList<ResultSet>();
 		ReturnedCarHire booking = new ReturnedCarHire();

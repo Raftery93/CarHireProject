@@ -1,0 +1,15 @@
+package ie.gmit.sw.ds.Controllers;
+
+import java.rmi.Naming;
+
+import ie.gmit.sw.ds.RMI.InterfaceRMI;
+
+public class BookingController {
+	
+	InterfaceRMI bookingSevice;
+	
+	public BookingController(){
+		this.bookingSevice = (InterfaceRMI) Naming.lookup("rmi://127.0.0.1:1099/bookingService");
+	}
+
+}

@@ -42,7 +42,7 @@ public class BookingController {
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter booking id to delete:\n");
 		int bookingId = sc.nextInt();
-		String query = "Delete from carbookings where booking_id = " + bookingId + ";";
+		String query = "Delete * from carbookings where booking_id = " + bookingId + ";";
 		
 		try {
 			bookingSevice.deleteCarHire(query);

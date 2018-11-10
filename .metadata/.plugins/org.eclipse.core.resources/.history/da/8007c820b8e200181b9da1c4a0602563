@@ -41,15 +41,8 @@ public class BookingController {
 		
 		Scanner sc = new Scanner(System.in);
 		System.out.println("Please enter booking id to delete:\n");
-		int bookingId = sc.nextInt();
-		String query = "Delete from carbookings where booking_id = " + bookingId + ";";
-		
-		try {
-			bookingSevice.deleteCarHire(query);
-		} catch (RemoteException e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+		int bookingId = sc.nextLine();
+		String query = "Delete * from bookings where booking_id = " + bookingId + ";";
 	}
 
 }

@@ -24,10 +24,10 @@ public class BookingController {
 	}
 	
 	public void createBooking(ReturnedCarHire booking){
-		//String query = "Insert INTO bookings VALUES(" + booking.getBookingId() + "," + booking.getVehicleId() + ","
-		//		+ booking.getCustomerId() + ",\"" + booking.getStartDate() + "\",\"" + booking.getEndDate() + "\");";
+		String query = "Insert INTO bookings VALUES(" + booking.getBookingId() + "," + booking.getVehicleId() + ","
+				+ booking.getCustomerId() + ",\"" + booking.getStartDate() + "\",\"" + booking.getEndDate() + "\");";
 		
-		String query = "Insert into carbookings values(123, 456, 789, '11-12-18', '12-12-18');";
+		//String query = "Insert into carbookings values(123, 456, 789, '11-12-18', '12-12-18');";
 		
 		try {
 			bookingSevice.createCarHire(query);

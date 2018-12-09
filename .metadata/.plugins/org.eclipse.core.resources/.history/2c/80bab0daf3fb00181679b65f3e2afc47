@@ -25,7 +25,7 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 
 	protected CarHireImpl() throws RemoteException, SQLException {
 		super();
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/carbooking?useSSL=false",
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/carBooking?useSSL=false",
 				"root", ""); // connect to the database
 
 		stmt = conn.createStatement(); // create the statement

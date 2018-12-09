@@ -1,0 +1,16 @@
+127.0.0.1 - - [09/Dec/2018:20:27:23 +0000] "GET / HTTP/1.1" 404 1069
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:27:26 +0000] "GET /JerseyRest/ HTTP/1.1" 200 262
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:27:51 +0000] "GET /JerseyRest/InterfaceRMI HTTP/1.1" 404 1092
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:28:12 +0000] "GET /JerseyRest/carbookings HTTP/1.1" 404 1091
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:28:57 +0000] "GET /JerseyRest/webapi/carbooking HTTP/1.1" 404 1077
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:29:13 +0000] "GET /JerseyRest/webapi/InterfaceRMI HTTP/1.1" 404 1077
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:29:27 +0000] "GET /JerseyRest/webapi/carbooking HTTP/1.1" 404 1077
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:29:45 +0000] "GET /JerseyRest/webapi/MyResource HTTP/1.1" 404 1077
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:30:04 +0000] "GET /JerseyRest/webapi/myresource HTTP/1.1" 404 1077
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:30:20 +0000] "GET /JerseyRest/webapi/myresource HTTP/1.1" 404 1077
+127.0.0.1 - - [09/Dec/2018:20:37:57 +0000] "GET / HTTP/1.1" 404 1069
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:37:58 +0000] "GET /JerseyRest/ HTTP/1.1" 200 262
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:38:10 +0000] "GET /JerseyRest/webapi/myresource HTTP/1.1" 404 1077
+127.0.0.1 - - [09/Dec/2018:20:40:11 +0000] "GET / HTTP/1.1" 404 1069
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:40:13 +0000] "GET /JerseyRest/ HTTP/1.1" 200 262
+0:0:0:0:0:0:0:1 - - [09/Dec/2018:20:40:16 +0000] "GET /JerseyRest/webapi/myresource HTTP/1.1" 404 1077

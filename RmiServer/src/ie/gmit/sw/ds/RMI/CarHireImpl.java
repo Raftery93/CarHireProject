@@ -1,6 +1,7 @@
 package ie.gmit.sw.ds.RMI;
 
 import java.rmi.RemoteException;
+
 import java.sql.ResultSet;
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -12,6 +13,8 @@ import javax.sql.DataSource;
 
 import java.sql.SQLException;
 import java.rmi.server.*;
+import ie.gmit.sw.ds.Models.Booking;
+import ie.gmit.sw.ds.Models.Vehicle;;
 
 public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 
@@ -22,7 +25,7 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 
 	protected CarHireImpl() throws RemoteException, SQLException {
 		super();
-		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/carhire?useSSL=false",
+		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/carBooking?useSSL=false",
 				"root", ""); // connect to the database
 
 		stmt = conn.createStatement(); // create the statement
@@ -39,13 +42,14 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 	}
 
 	
-	public List<ReturnedCarHire> readCarHire() throws RemoteException {
+	public List<Booking> readCarHire() throws RemoteException {
 		System.out.println("inside readBookings");
 		String strSelect = "select * from carbookings";
 		ResultSet rset = null;
 		ArrayList<ResultSet> resultSetSerialized = new ArrayList<ResultSet>();
-		ReturnedCarHire booking = new ReturnedCarHire();
-		List<ReturnedCarHire> bookings = new ArrayList<ReturnedCarHire>();
+		Booking booking = new Booking();
+		Vehicle vehicle = new Vehicle();
+		List<Booking> bookings = new ArrayList<Booking>();
 
 		try {
 			rset = stmt.executeQuery(strSelect); // generate the result set
@@ -60,7 +64,7 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 				booking.setCustomerId(rset.getInt("customer_id"));
 				booking.setStartDate(rset.getString("start_date"));
 				booking.setEndDate(rset.getString("end_date"));
-
+								
 				bookings.add(booking);
 			}
 		} catch (SQLException e) {

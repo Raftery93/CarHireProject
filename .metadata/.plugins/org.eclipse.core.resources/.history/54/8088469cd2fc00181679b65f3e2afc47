@@ -1,0 +1,8 @@
+<html>
+<body>
+	<form action="DeleteBooking.jsp">
+		<button type="submit" value="submit">View a
+			Booking</button>
+	</form>
+</body>
+</html>

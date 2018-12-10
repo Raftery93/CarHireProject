@@ -19,7 +19,7 @@ import javax.xml.bind.annotation.XmlType;
 
 /**
  * <p>Java class for Bookings complex type.
- * 
+ *  THIS CLASS WAS CREATED MANUALLY
  * <p>The following schema fragment specifies the expected content contained within this class.
  * 
  * <pre>
@@ -27,7 +27,7 @@ import javax.xml.bind.annotation.XmlType;
  *   &lt;complexContent>
  *     &lt;restriction base="{http://www.w3.org/2001/XMLSchema}anyType">
  *       &lt;sequence>
- *         &lt;element name="booking" type="{http://sw.gmit.ie/dsModels/}Booking" maxOccurs="unbounded" minOccurs="0"/>
+ *         &lt;element name="booking" type="{http://sw.gmit.ie/Models/}Booking" maxOccurs="unbounded" minOccurs="0"/>
  *       &lt;/sequence>
  *     &lt;/restriction>
  *   &lt;/complexContent>
@@ -43,7 +43,7 @@ import javax.xml.bind.annotation.XmlType;
 @XmlRootElement(name = "bookings")
 public class Bookings {
 
-    @XmlElement(namespace = "http://sw.gmit.ie/dsModels/")
+    @XmlElement(namespace = "http://sw.gmit.ie/Models/")
     protected List<Booking> booking;
 
     /**

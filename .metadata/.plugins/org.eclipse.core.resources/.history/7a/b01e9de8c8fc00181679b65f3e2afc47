@@ -1,0 +1,20 @@
+package ie.gmit.sw.FrontEnd;
+
+import java.util.List;
+
+import ie.gmit.sw.ApiConsumer.RestAccess;
+import ie.gmit.sw.Models.Booking;
+
+public class Runner {
+
+	public static void main(String[] args) {
+		// TODO Auto-generated method stub
+		
+		RestAccess access = new RestAccess(); // Get a handle on the RestAccess object.
+		List<Booking> bookingList = access.getBookings(); // Call the getBookings() method in the access object.
+		for (Booking booking : bookingList) {
+			System.out.println("ID of booking:::"+booking.getBookingId());
+		}
+	}
+
+}

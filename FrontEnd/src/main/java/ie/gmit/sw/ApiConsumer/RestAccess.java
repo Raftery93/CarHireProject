@@ -16,7 +16,7 @@ import ie.gmit.sw.Models.Bookings;
 
 public class RestAccess extends MarshalBooking {
 
-	private String base = "http://localhost:8080/dsRESTfulServiceProject/webapi/bookings"; 
+	private String base = "http://localhost:8080/JerseyRestful/webapi/myresource"; 
 	private Client client = ClientBuilder.newClient();
 	private WebTarget target = client.target(base);
 	private String xmlResponse;
@@ -28,12 +28,14 @@ public class RestAccess extends MarshalBooking {
 
 		
 		xmlResponse = target.request(MediaType.APPLICATION_XML).get(String.class);
+		System.out.println(xmlResponse);
 		
 		Bookings bookings = getBookingsFromXML(xmlResponse);
 		
 		List<Booking> bookingList;
 		
 		bookingList = bookings.getBooking();
+		System.out.println(bookingList.size());
 
 		return bookingList;
 

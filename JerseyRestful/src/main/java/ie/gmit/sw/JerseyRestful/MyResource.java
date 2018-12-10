@@ -4,6 +4,7 @@ import java.net.MalformedURLException;
 import java.rmi.Naming;
 import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.ws.rs.*;
@@ -27,22 +28,51 @@ public class MyResource extends MarshalBooking{
      *
      * @return String that will be returned as a text/plain response.
      */
+	
+
     @GET
     @Produces(MediaType.APPLICATION_XML)
-    public List<Booking> getIt() throws MalformedURLException, RemoteException, Exception  {
+     public List<Booking> getIt() throws MalformedURLException, RemoteException, NotBoundException {
     	
+    	RmiConnector rmi = new RmiConnector();
+    	
+    	List<Booking> bookings = new ArrayList<Booking>();
+    	try {
+			bookings = rmi.readData();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	try {
+			return rmi.readData();
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+    	
+    	/*
     	InterfaceRMI ifRmi;
     	
     	ifRmi = (InterfaceRMI) Naming.lookup("rmi://127.0.0.1:1099/carbooking");
+    	
     	List<Booking> allBookings = ifRmi.readCarHire();
     	
-    	for (Booking bmc : allBookings) {
-			System.out.println(bmc.toString());
+		Booking requested = null;
+		for (Booking b : allBookings) {
+			
+				requested = b;
 			
 		}
-    	//System.out.println(ifRmi.readCarHire().toString());
-        return allBookings;
+		*/
+		return bookings;
+		
+			
     }
+    
+    
+    
+    
     
     
     @POST
@@ -86,7 +116,7 @@ public class MyResource extends MarshalBooking{
 			booking.setStartDate(booking.getStartDate());
 			booking.setEndDate(booking.getEndDate());
 			booking.setBookingNumber(null);
-
+			
 			String msg = getBookingAsXML(booking);
 
 			System.out.println(msg);

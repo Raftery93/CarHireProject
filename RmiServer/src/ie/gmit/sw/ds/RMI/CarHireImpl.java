@@ -45,7 +45,7 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 		String strSelect = "select * from bookings";
 		ResultSet rset = null;
 		//ArrayList<ResultSet> resultSetSerialized = new ArrayList<ResultSet>();
-		Booking booking = new Booking();
+		
 		//Vehicle vehicle = new Vehicle();
 		List<Booking> bookings = new ArrayList<Booking>();
 
@@ -59,6 +59,7 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 
 		try {
 			while (rset.next()) {
+				Booking booking = new Booking();
 				booking.setBookingId(rset.getInt("booking_id"));
 				booking.setVehicleId(rset.getInt("vehicle_id"));
 				booking.setCustomerId(rset.getInt("customer_id"));

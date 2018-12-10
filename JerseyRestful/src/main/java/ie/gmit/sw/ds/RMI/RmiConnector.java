@@ -14,7 +14,6 @@ public class RmiConnector {
 	InterfaceRMI bookingService;
 	
 	public RmiConnector(){
-		System.out.println("In RmiConnector before naming lookup");
 
 		try {
 			this.bookingService = (InterfaceRMI) Naming.lookup("rmi://127.0.0.1:1099/carbooking");
@@ -71,5 +70,32 @@ public class RmiConnector {
 			return null;
 		}
 		
+	}
+	
+	public void deleteBooking(int id) {
+		String query = "DELETE FROM bookings WHERE booking_id =" + id + ";";
+		
+		try {
+			bookingService.deleteCarHire(query);
+		} catch (RemoteException e) {
+			System.out.println("error deleting booking in Booking controller");
+			e.printStackTrace();
+		}
+		
+	}
+	
+	public void updateBooking(Booking booking) {
+
+		String query = "UPDATE bookings SET vehicle_id =" + booking.getVehicleId() + ", " + "customer_id ="
+				+ booking.getCustomerId() + ", " + "start_date =\"" + booking.getStartDate() + "\", " + "end_date =\""
+				+ booking.getEndDate() + "\" WHERE booking_id=" + booking.getBookingId() + ";";
+
+		try {
+			bookingService.updateCarHire(query);
+		} catch (RemoteException e) {
+			System.out.println("error updating booking in Booking controller");
+			e.printStackTrace();
+		}
+
 	}
 }

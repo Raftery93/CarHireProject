@@ -72,8 +72,6 @@ public class MyResource extends MarshalBooking{
 	@Path("/{value}")
 	public Response getById(@PathParam("value") String value) {
 		Booking booking = new Booking();
-		Customer customer = new Customer();
-		Vehicle vehicle = new Vehicle();
 		RmiConnector connector = new RmiConnector();
 		int id = Integer.parseInt(value); // convert the value to an int
 		booking = connector.getBookingById(id);
@@ -81,8 +79,8 @@ public class MyResource extends MarshalBooking{
 			System.out.println(booking.toString());
 			// construct the booking response object
 			booking.setBookingId(booking.getBookingId());
-			customer.setCustomerId(booking.getCustomerId());
-			vehicle.setId(booking.getVehicleId());
+			booking.getCustomerId();
+			booking.getVehicleId();
 			booking.setCustomerId(id);
 			booking.setVehicleId(booking.getVehicleId());
 			booking.setStartDate(booking.getStartDate());
@@ -99,6 +97,50 @@ public class MyResource extends MarshalBooking{
 		}
 
 	}
+    
+    //================ DELETE ==============================
+    @DELETE
+	@Consumes(MediaType.APPLICATION_XML)
+	@Path("{id}")
+	public Response delete(@PathParam("id") final String id, String input) {
+
+    	RmiConnector connector = new RmiConnector();
+    	
+		int value = Integer.parseInt(id); // convert the value to an int
+
+		Booking returnedBooking = connector.getBookingById(value);
+
+		if (returnedBooking != null) {
+			connector.deleteBooking(value);
+		}
+
+		return Response.ok().build();
+	}
+    
+    //=================== UPDATE ============================
+    @PUT
+	@Consumes(MediaType.APPLICATION_XML)
+	@Path("{id}")
+	public Response Update(@PathParam("id") final String id, String input) {
+    	RmiConnector connector = new RmiConnector();
+		Booking booking = getBookingFromXML(input);
+		int value = Integer.parseInt(id); // convert the value to an int
+		Booking myBooking = connector.getBookingById(value);
+		
+		
+		myBooking.setBookingId(booking.getBookingId());
+		
+		myBooking.setCustomerId(booking.getCustomerId());
+		myBooking.setVehicleId(booking.getVehicleId());
+		myBooking.setStartDate(booking.getStartDate());
+		myBooking.setEndDate(booking.getEndDate());
+
+		connector.updateBooking(myBooking);
+
+		return Response.ok().build();
+
+	}
+
 	
 
 }

@@ -24,3 +24,7 @@
 127.0.0.1 - - [10/Dec/2018:16:51:48 +0000] "GET / HTTP/1.1" 404 1069
 0:0:0:0:0:0:0:1 - - [10/Dec/2018:16:51:49 +0000] "GET /JerseyRestful/ HTTP/1.1" 200 247
 0:0:0:0:0:0:0:1 - - [10/Dec/2018:16:51:51 +0000] "GET /JerseyRestful/webapi/myresource HTTP/1.1" 200 195
+127.0.0.1 - - [10/Dec/2018:18:45:29 +0000] "GET / HTTP/1.1" 404 1069
+0:0:0:0:0:0:0:1 - - [10/Dec/2018:18:45:30 +0000] "GET /JerseyRestful/ HTTP/1.1" 200 247
+0:0:0:0:0:0:0:1 - - [10/Dec/2018:18:45:32 +0000] "GET /JerseyRestful/webapi/myresource HTTP/1.1" 200 195
+0:0:0:0:0:0:0:1 - - [10/Dec/2018:18:54:10 +0000] "POST /JerseyRestful/webapi/myresource HTTP/1.1" 500 4125

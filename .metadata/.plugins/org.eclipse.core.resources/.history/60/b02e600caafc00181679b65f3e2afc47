@@ -21,26 +21,12 @@ public class RmiConnector {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
+		System.out.println("In RmiConnector after naming lookup");
 
 	}
 	
 	// ============== READ ====================
 	public List<Booking> readData() throws Exception {
 		return bookingService.readCarHire();
-	}
-	
-	//=============== CREATE ==================
-	public void createBooking(Booking booking) {
-		String query = "Insert INTO bookings VALUES(" + booking.getBookingId() + "," + booking.getVehicleId() + ","
-				+ booking.getCustomerId() + ",\"" + booking.getStartDate() + "\",\"" + booking.getEndDate() + "\");";
-
-
-			try {
-				bookingService.createCarHire(query);
-			} catch (RemoteException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
-
 	}
 }

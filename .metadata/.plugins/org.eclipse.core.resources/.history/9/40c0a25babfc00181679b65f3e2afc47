@@ -11,8 +11,7 @@ import ie.gmit.sw.Marshalling.MarshalBooking;
 import ie.gmit.sw.ds.Models.Booking;
 import ie.gmit.sw.ds.Models.Customer;
 import ie.gmit.sw.ds.Models.Vehicle;
-import ie.gmit.sw.ds.RMI.InterfaceRMI;
-import ie.gmit.sw.ds.RMI.RmiConnector;;
+import ie.gmit.sw.ds.RMI.InterfaceRMI;;
 
 /**
  * Root resource (exposed at "myresource" path)
@@ -47,12 +46,21 @@ public class MyResource extends MarshalBooking{
     @POST
 	@Consumes(MediaType.APPLICATION_XML)
 	public Response create(String input) {
+		System.out.println(input);
+		
+		InterfaceRMI ifRmi;
+    	
+    	ifRmi = (InterfaceRMI) Naming.lookup("rmi://127.0.0.1:1099/carbooking");
+    	
+    	String query = "delete * from bookings where booking_id = "+ input;
+    	
+    	ifRmi.createCarHire(query);
     	
     	
-    	Booking booking = getBookingFromXML(input);
-    	
-		Customer customer = null;
-		Vehicle vehicle = null;
+
+		Booking booking = getBookingFromXML(input);
+		Customer customer = booking.getCustomer();
+		Vehicle vehicle = booking.getVehicle();
 
 		// construct the returnedBooking object
 		booking.getBookingId();
@@ -61,9 +69,7 @@ public class MyResource extends MarshalBooking{
 		booking.getEndDate();
 		booking.getStartDate();
 
-		RmiConnector connector = new RmiConnector();
-		connector.createBooking(booking);
-		//ifRmi.createCarHire(booking);
+		controller.createBooking(booking);
 
 		return Response.ok().build();
 	}

@@ -24,9 +24,11 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 
 	protected CarHireImpl() throws RemoteException, SQLException {
 		super();
+		System.out.println("In CarHire before getConnection");
 
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/carbooking?useSSL=false",
 				"root", ""); // connect to the database
+System.out.println("In CarHire after getConnection");
 		stmt = conn.createStatement(); // create the statement
 	}
 
@@ -42,6 +44,7 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 
 	
 	public List<Booking> readCarHire() throws RemoteException {
+		System.out.println("inside readBookings");
 		String strSelect = "select * from bookings";
 		ResultSet rset = null;
 		//ArrayList<ResultSet> resultSetSerialized = new ArrayList<ResultSet>();
@@ -59,6 +62,7 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 
 		try {
 			while (rset.next()) {
+				System.out.println("In while");
 				booking.setBookingId(rset.getInt("booking_id"));
 				booking.setVehicleId(rset.getInt("vehicle_id"));
 				booking.setCustomerId(rset.getInt("customer_id"));
@@ -68,11 +72,13 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 				bookings.add(booking);
 				
 			}
+			System.out.println("Finished while" + bookings);
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
 
+		System.out.println("Returning bookings");
 		return bookings;
 	}
 

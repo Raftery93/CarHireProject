@@ -31,7 +31,12 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 	}
 
 	// Override implement methods
-	public void createCarHire(String query) throws RemoteException {
+	public void createCarHire(Booking booking) throws RemoteException {
+		
+		
+		String query = "Insert INTO bookings VALUES(" + booking.getBookingId() + "," + booking.getVehicleId() + ","
+				+ booking.getCustomerId() + ",\"" + booking.getStartDate() + "\",\"" + booking.getEndDate() + "\");";
+		
 		try {
 			stmt.executeUpdate(query); // just pass the query to the database
 		} catch (SQLException e) {

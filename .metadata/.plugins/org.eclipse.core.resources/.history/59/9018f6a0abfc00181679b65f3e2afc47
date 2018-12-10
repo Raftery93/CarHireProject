@@ -48,6 +48,7 @@ public class MyResource extends MarshalBooking{
 	@Consumes(MediaType.APPLICATION_XML)
 	public Response create(String input) {
     	
+    	InterfaceRMI ifRmi;
     	
     	Booking booking = getBookingFromXML(input);
     	

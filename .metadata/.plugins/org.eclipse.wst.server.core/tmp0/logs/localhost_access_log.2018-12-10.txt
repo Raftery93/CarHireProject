@@ -21,3 +21,6 @@
 0:0:0:0:0:0:0:1 - - [10/Dec/2018:16:50:31 +0000] "GET /JerseyRestful/WEB-INF/classes/ie/gmit/sw/JerseyRestful/MyResource.java HTTP/1.1" 404 1046
 0:0:0:0:0:0:0:1 - - [10/Dec/2018:16:50:49 +0000] "GET /JerseyRestful/ HTTP/1.1" 200 247
 0:0:0:0:0:0:0:1 - - [10/Dec/2018:16:50:51 +0000] "GET /JerseyRestful/webapi/myresource HTTP/1.1" 500 1080
+127.0.0.1 - - [10/Dec/2018:16:51:48 +0000] "GET / HTTP/1.1" 404 1069
+0:0:0:0:0:0:0:1 - - [10/Dec/2018:16:51:49 +0000] "GET /JerseyRestful/ HTTP/1.1" 200 247
+0:0:0:0:0:0:0:1 - - [10/Dec/2018:16:51:51 +0000] "GET /JerseyRestful/webapi/myresource HTTP/1.1" 200 195

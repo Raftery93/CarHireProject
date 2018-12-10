@@ -11,7 +11,6 @@ import javax.ws.rs.Produces;
 import javax.ws.rs.core.MediaType;
 import javax.xml.bind.annotation.XmlRootElement;
 
-import ie.gmit.sw.Marshalling.MarshalBooking;
 import ie.gmit.sw.ds.Models.Booking;
 import ie.gmit.sw.ds.RMI.InterfaceRMI;;
 
@@ -20,7 +19,7 @@ import ie.gmit.sw.ds.RMI.InterfaceRMI;;
  */
 @XmlRootElement
 @Path("myresource")
-public class MyResource extends MarshalBooking{
+public class MyResource {
 	
     /**
      * Method handling HTTP GET requests. The returned object will be sent

@@ -1,0 +1,26 @@
+package ie.gmit.sw.Marshalling;
+import ie.gmit.sw.ds.Models.Booking;
+
+public class MarshalBooking {
+
+	public MarshalBooking(){
+		
+		public String getBookingAsXML(Booking booking) {
+			// Marshal the Booking into XML
+			StringWriter sw = new StringWriter();
+			Marshaller m;
+
+			try {
+				JAXBContext jc = JAXBContext.newInstance("ie.gmit.sw.dsModels");
+				m = jc.createMarshaller();
+				m.setProperty(Marshaller.JAXB_FORMATTED_OUTPUT, Boolean.TRUE);
+				m.marshal(booking, sw);
+			} catch (JAXBException e) {
+				System.out.println("Problem marshalling booking");
+				e.printStackTrace();
+			}
+
+			return sw.toString();
+		}// end getBookingAsXML
+	}
+}

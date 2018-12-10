@@ -53,12 +53,14 @@ public class MyResource extends MarshalBooking{
     	
     	Booking booking = getBookingFromXML(input);
     	
-  
+    	Customer customer = new Customer();
+		Vehicle vehicle = new Vehicle();
+
 		System.out.println(booking.toString()+"============================");
 		// construct the returnedBooking object
 		booking.setBookingId(booking.getBookingId());
-		booking.setCustomerId(booking.getCustomerId());
-		booking.setVehicleId(booking.getVehicleId());
+		booking.setCustomerId(customer.getCustomerId());
+		booking.setVehicleId(vehicle.getId());
 		booking.setEndDate(booking.getEndDate());
 		booking.setStartDate(booking.getStartDate());
 

@@ -2,7 +2,6 @@ package ie.gmit.sw.JerseyRestful;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -47,22 +46,24 @@ public class MyResource extends MarshalBooking{
     
     @POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public Response create(String input) throws RemoteException, MalformedURLException, NotBoundException {
+	public Response create(String input) {
     	
-    	RmiConnector connector = new RmiConnector();
     	
     	Booking booking = getBookingFromXML(input);
     	
-  
-		System.out.println(booking.toString()+"============================");
-		// construct the returnedBooking object
-		booking.setBookingId(booking.getBookingId());
-		booking.setCustomerId(booking.getCustomerId());
-		booking.setVehicleId(booking.getVehicleId());
-		booking.setEndDate(booking.getEndDate());
-		booking.setStartDate(booking.getStartDate());
+		Customer customer = null;
+		Vehicle vehicle = null;
 
+		// construct the returnedBooking object
+		booking.getBookingId();
+		customer.getCustomerId();
+		vehicle.getId();
+		booking.getEndDate();
+		booking.getStartDate();
+
+		RmiConnector connector = new RmiConnector();
 		connector.createBooking(booking);
+		//ifRmi.createCarHire(booking);
 
 		return Response.ok().build();
 	}

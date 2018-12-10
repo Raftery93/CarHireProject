@@ -49,19 +49,25 @@ public class MyResource extends MarshalBooking{
 	@Consumes(MediaType.APPLICATION_XML)
 	public Response create(String input) throws RemoteException, MalformedURLException, NotBoundException {
     	
-    	RmiConnector connector = new RmiConnector();
     	
+    	
+    	InterfaceRMI ifRmi;
+    	ifRmi = (InterfaceRMI) Naming.lookup("rmi://127.0.0.1:1099/carbooking");
     	Booking booking = getBookingFromXML(input);
+    	List<Booking> allBookings = ifRmi.readCarHire();
+    	RmiConnector connector = new RmiConnector();
+    	allBookings.add(booking);
     	
   
-		System.out.println(booking.toString()+"============================");
+
+		/*
 		// construct the returnedBooking object
 		booking.setBookingId(booking.getBookingId());
-		booking.setCustomerId(booking.getCustomerId());
-		booking.setVehicleId(booking.getVehicleId());
+		booking.setCustomerId(customer.getCustomerId());
+		booking.setVehicleId(vehicle.getId());
 		booking.setEndDate(booking.getEndDate());
 		booking.setStartDate(booking.getStartDate());
-
+*/
 		connector.createBooking(booking);
 
 		return Response.ok().build();

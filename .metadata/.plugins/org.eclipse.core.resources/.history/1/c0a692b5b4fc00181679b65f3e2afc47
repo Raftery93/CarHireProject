@@ -2,7 +2,6 @@ package ie.gmit.sw.JerseyRestful;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -21,6 +20,10 @@ import ie.gmit.sw.ds.RMI.RmiConnector;;
 @Path("myresource")
 public class MyResource extends MarshalBooking{
 	
+	public InterfaceRMI ifRmi;
+	
+	ifRmi = (InterfaceRMI) Naming.lookup("rmi://127.0.0.1:1099/carbooking");
+	List<Booking> allBookings = ifRmi.readCarHire();
     /**
      * Method handling HTTP GET requests. The returned object will be sent
      * to the client as "text/plain" media type.
@@ -31,10 +34,7 @@ public class MyResource extends MarshalBooking{
     @Produces(MediaType.APPLICATION_XML)
     public List<Booking> getIt() throws MalformedURLException, RemoteException, Exception  {
     	
-    	InterfaceRMI ifRmi;
     	
-    	ifRmi = (InterfaceRMI) Naming.lookup("rmi://127.0.0.1:1099/carbooking");
-    	List<Booking> allBookings = ifRmi.readCarHire();
     	
     	for (Booking bmc : allBookings) {
 			System.out.println(bmc.toString());
@@ -47,21 +47,22 @@ public class MyResource extends MarshalBooking{
     
     @POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public Response create(String input) throws RemoteException, MalformedURLException, NotBoundException {
+	public Response create(String input) {
     	
     	RmiConnector connector = new RmiConnector();
     	
     	Booking booking = getBookingFromXML(input);
-    	
-  
-		System.out.println(booking.toString()+"============================");
+    	Customer customer = new Customer();
+		Vehicle vehicle = new Vehicle();
+
+		/*
 		// construct the returnedBooking object
 		booking.setBookingId(booking.getBookingId());
-		booking.setCustomerId(booking.getCustomerId());
-		booking.setVehicleId(booking.getVehicleId());
+		booking.setCustomerId(customer.getCustomerId());
+		booking.setVehicleId(vehicle.getId());
 		booking.setEndDate(booking.getEndDate());
 		booking.setStartDate(booking.getStartDate());
-
+*/
 		connector.createBooking(booking);
 
 		return Response.ok().build();

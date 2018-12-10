@@ -2,7 +2,6 @@ package ie.gmit.sw.JerseyRestful;
 
 import java.net.MalformedURLException;
 import java.rmi.Naming;
-import java.rmi.NotBoundException;
 import java.rmi.RemoteException;
 import java.util.List;
 
@@ -47,26 +46,28 @@ public class MyResource extends MarshalBooking{
     
     @POST
 	@Consumes(MediaType.APPLICATION_XML)
-	public Response create(String input) throws RemoteException, MalformedURLException, NotBoundException {
+	public Response create(String input) {
     	
-    	RmiConnector connector = new RmiConnector();
     	
     	Booking booking = getBookingFromXML(input);
     	
-  
-		System.out.println(booking.toString()+"============================");
-		// construct the returnedBooking object
-		booking.setBookingId(booking.getBookingId());
-		booking.setCustomerId(booking.getCustomerId());
-		booking.setVehicleId(booking.getVehicleId());
-		booking.setEndDate(booking.getEndDate());
-		booking.setStartDate(booking.getStartDate());
+		Customer customer = null;
+		Vehicle vehicle = null;
 
+		// construct the returnedBooking object
+		booking.getBookingId();
+		customer.getCustomerId();
+		vehicle.getId();
+		booking.getEndDate();
+		booking.getStartDate();
+
+		RmiConnector connector = new RmiConnector();
 		connector.createBooking(booking);
+		//ifRmi.createCarHire(booking);
 
 		return Response.ok().build();
 	}
-    
+    /*
     @GET
 	@Produces(MediaType.APPLICATION_XML)
 	@Path("/{value}")
@@ -74,19 +75,18 @@ public class MyResource extends MarshalBooking{
 		Booking booking = new Booking();
 		Customer customer = new Customer();
 		Vehicle vehicle = new Vehicle();
-		RmiConnector connector = new RmiConnector();
 		int id = Integer.parseInt(value); // convert the value to an int
-		booking = connector.getBookingById(id);
-		if (booking != null) {
-			System.out.println(booking.toString());
+		ReturnedBooking returnedBooking = controller.getBookingById(id);
+		if (returnedBooking != null) {
+			System.out.println(returnedBooking.toString());
 			// construct the booking response object
-			booking.setBookingId(booking.getBookingId());
-			customer.setCustomerId(booking.getCustomerId());
-			vehicle.setId(booking.getVehicleId());
-			booking.setCustomerId(id);
-			booking.setVehicleId(booking.getVehicleId());
-			booking.setStartDate(booking.getStartDate());
-			booking.setEndDate(booking.getEndDate());
+			booking.setBookingId(returnedBooking.getBookingId());
+			customer.setCustomerId(returnedBooking.getCustomerId());
+			vehicle.setId(returnedBooking.getVehicleId());
+			booking.setCustomer(customer);
+			booking.setVehicle(vehicle);
+			booking.setStartDate(returnedBooking.getStartDate());
+			booking.setEndDate(returnedBooking.getEndDate());
 			booking.setBookingNumber(null);
 
 			String msg = getBookingAsXML(booking);
@@ -99,6 +99,6 @@ public class MyResource extends MarshalBooking{
 		}
 
 	}
-	
+	*/
 
 }

@@ -14,7 +14,6 @@ import javax.sql.DataSource;
 import java.sql.SQLException;
 import java.rmi.server.*;
 import ie.gmit.sw.ds.Models.Booking;
-import ie.gmit.sw.ds.Models.Vehicle;;
 
 public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 
@@ -25,9 +24,11 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 
 	protected CarHireImpl() throws RemoteException, SQLException {
 		super();
+		System.out.println("In CarHire before getConnection");
+
 		Connection conn = DriverManager.getConnection("jdbc:mysql://localhost:3306/carbooking?useSSL=false",
 				"root", ""); // connect to the database
-
+System.out.println("In CarHire after getConnection");
 		stmt = conn.createStatement(); // create the statement
 	}
 
@@ -44,21 +45,24 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 	
 	public List<Booking> readCarHire() throws RemoteException {
 		System.out.println("inside readBookings");
-		String strSelect = "select * from carbookings";
+		String strSelect = "select * from bookings";
 		ResultSet rset = null;
-		ArrayList<ResultSet> resultSetSerialized = new ArrayList<ResultSet>();
+		//ArrayList<ResultSet> resultSetSerialized = new ArrayList<ResultSet>();
 		Booking booking = new Booking();
-		Vehicle vehicle = new Vehicle();
+		//Vehicle vehicle = new Vehicle();
 		List<Booking> bookings = new ArrayList<Booking>();
 
 		try {
 			rset = stmt.executeQuery(strSelect); // generate the result set
 		} catch (SQLException e) {
 			System.out.println("sql error");
+			System.out.println(e);
+			System.out.println(rset.toString());
 		}
 
 		try {
 			while (rset.next()) {
+				System.out.println("In while");
 				booking.setBookingId(rset.getInt("booking_id"));
 				booking.setVehicleId(rset.getInt("vehicle_id"));
 				booking.setCustomerId(rset.getInt("customer_id"));
@@ -66,12 +70,15 @@ public class CarHireImpl extends UnicastRemoteObject implements InterfaceRMI{
 				booking.setEndDate(rset.getString("end_date"));
 								
 				bookings.add(booking);
+				
 			}
+			System.out.println("Finished while" + bookings);
 		} catch (SQLException e) {
 
 			e.printStackTrace();
 		}
 
+		System.out.println("Returning bookings");
 		return bookings;
 	}
 

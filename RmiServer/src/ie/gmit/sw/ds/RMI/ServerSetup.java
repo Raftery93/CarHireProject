@@ -21,6 +21,7 @@ public class ServerSetup {
 		System.out.println("Server ready.");
 		
 		//BookingController bc = new BookingController();
+		
 		//bc.createBooking(null);
 		//bc.deleteBooking();
 	}

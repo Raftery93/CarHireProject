@@ -4,13 +4,13 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>ie.gmit.sw</groupId>
-    <artifactId>DSProject</artifactId>
+    <artifactId>JerseyRest</artifactId>
     <packaging>war</packaging>
     <version>0.0.1-SNAPSHOT</version>
     <name>DSProject</name>
 
     <build>
-        <finalName>DSProject</finalName>
+        <finalName>JerseyRest</finalName>
         <plugins>
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>

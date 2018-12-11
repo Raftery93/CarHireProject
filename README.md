@@ -1,5 +1,4 @@
 
-![distributedsystems](https://user-images.githubusercontent.com/22448079/49762395-854b6a80-fcc1-11e8-90a1-b442346b833a.png)
 
 
 <p align="center">
